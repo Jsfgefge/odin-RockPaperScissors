@@ -35,25 +35,49 @@ function playRound(playerSelection, pcSelection){
 
 }
 
-function playGame(){
-    let result = 0;
-    
-    for (let i = 0; i < 5; i++) {
-        var isWin = playRound(pcChoice(),pcChoice()); 
-        if(isWin.includes("Win")){
-            result++;
-        }
-    }
-    
-    if(result >=3){
-        console.log("Player wins");
-    }else{ 
-        console.log("Computers wins");
-    }
-
+function playGameUI(playerSelection){
+    var isWin = playRound(playerSelection, pcChoice());
+    console.log(isWin);
 }
 
-playGame();
+const btnPaper = document.querySelector('#btnPaper');
+const btnRock = document.querySelector("#btnRock");
+const btnScissors = document.querySelector("#btnScissors");
+
+btnPaper.addEventListener('click', () => {
+    playGameUI('Paper');
+  });
+btnRock.addEventListener('click',()=>{
+    playGameUI('Rock');
+})
+btnScissors.addEventListener('click',()=>{
+    playGameUI('Scissors');
+})
+
+
+
+
+
+
+//remove this basically
+// function playGame(){
+//     let result = 0;
+    
+//     for (let i = 0; i < 5; i++) {
+//         var isWin = playRound(pcChoice(),pcChoice()); 
+//         if(isWin.includes("Win")){
+//             result++;
+//         }
+//     }
+    
+//     if(result >=3){
+//         console.log("Player wins");
+//     }else{ 
+//         console.log("Computers wins");
+//     }
+
+// }
+// playGame();
 
 
 
