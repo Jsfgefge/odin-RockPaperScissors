@@ -2,6 +2,7 @@
 
 var fixedChoice;
 var playerCounter=0;
+var globalCounter=0;
 var pcCounter=0;
 
 
@@ -54,6 +55,7 @@ function playGameUI(playerSelection){
     var isWin = playRound(playerSelection, fixedChoice );
     if(isWin == 1){
         playerCounter+=1;
+        globalCounter+=1;
     }else{
         pcCounter+=1;
     }
@@ -73,6 +75,8 @@ const choicesContainer = document.querySelector('.container.choices');
 
 const outcome = document.createElement('h3');
 const result = document.createElement('h3');
+const resultPlayer = document.createElement('h3');
+const resultPc = document.createElement('h3');
 const playerH5 = document.createElement("h5");
 const pcH5 = document.createElement("h5");
 
@@ -106,12 +110,18 @@ function addOutcome(isWin){
 }
 
 function addResult(){
-    result.classList.add('result');
-    result.textContent = globalCounter;
-    resultsContainer.appendChild(result);
+    resultPlayer.classList.add('result');
+    resultPlayer.textContent = "Player wins:" + playerCounter;
+    resultsContainer.appendChild(resultPlayer);
 
-    if(globalCounter == 5){
-        alert("")
+    resultPc.classList.add('result');
+    resultPc.textContent = "Pc wins:" + pcCounter;
+    resultsContainer.appendChild(resultPc);
+
+    if(playerCounter == 5){
+        alert("el ganador es el jugador");
+    }else if( pcCounter==5){
+        alert("el ganador es la Pc");
     }
 }
 
